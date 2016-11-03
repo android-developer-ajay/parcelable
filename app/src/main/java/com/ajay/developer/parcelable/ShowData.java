@@ -17,10 +17,10 @@ public class ShowData extends AppCompatActivity {
         course = (TextView) findViewById(R.id.tv_scourse);
 
         Student student = getIntent().getParcelableExtra("student");
-        name.setText(student.mSName);
-        age.setText("" + student.mSAge);
-        address.setText(student.mSAddress);
-        course.setText(student.mSCourse);
+        name.setText(student.name);
+        age.setText("" + student.age);
+        address.setText(student.address);
+        course.setText(student.course);
 
     }
 }

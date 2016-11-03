@@ -8,33 +8,23 @@ import android.os.Parcelable;
  */
 
 public class Student implements Parcelable {
-    String mSName;
-    int mSAge;
-    String mSAddress;
-    String mSCourse;
 
-    public Student(String name, int age, String address, String Course) {
-        this.mSName = name;
-        this.mSAge = age;
-        this.mSAddress = address;
-        this.mSCourse = Course;
+    String name, address, course;
+    int age;
+
+    public Student(String name, int age, String address, String course) {
+
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.course = course;
     }
 
-    private Student(Parcel in) {
-        this.mSName = in.readString();
-        this.mSCourse = in.readString();
-        this.mSAddress = in.readString();
-        this.mSAge = in.readInt();
-
-
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mSName);
-        dest.writeString(mSAddress);
-        dest.writeString(mSCourse);
-        dest.writeInt(mSAge);
+    protected Student(Parcel in) {
+        this.name = in.readString();
+        this.age = in.readInt();
+        this.address = in.readString();
+        this.course = in.readString();
     }
 
     public static final Creator<Student> CREATOR = new Creator<Student>() {
@@ -52,5 +42,14 @@ public class Student implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(age);
+        dest.writeString(address);
+        dest.writeString(course);
+
     }
 }
